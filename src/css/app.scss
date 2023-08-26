@@ -1,0 +1,11 @@
+// app global css in SCSS form
+
+@font-face {
+  font-family: Nunito Sans;
+  src: url(https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800&family=Poppins:ital,wght@0,500;1,700&display=swap);
+}
+
+// declare a class which applies it
+.my-font {
+  font-family: 'Nunito Sans', sans-serif;
+}
