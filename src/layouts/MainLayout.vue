@@ -1,42 +1,20 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+  <q-layout view="lHh lpR lff">
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <div class="drawer-content">
+        <img src="icons/Logo-login.png" alt="logo" class="logo" />
+        <div class="menu">
+          <h1 class="menu-title">MENU</h1>
+          <div class="menu-item">
+            <img src="icons/office.png" alt="empresas" class="menu-icon" />
+            <h1 class="menu-option">Empresas</h1>
+          </div>
+        </div>
+        <div class="footer">
+          <img src="icons/power-white.png" alt="sair" class="menu-icon-quit" />
+          <h1 class="menu-quit">Sair</h1>
+        </div>
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -45,72 +23,104 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
+<script>
+import { ref } from 'vue';
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
+export default {
+  setup() {
+    const leftDrawerOpen = ref(false);
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-});
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+};
 </script>
+
+<style scoped lang="scss">
+.drawer-content {
+  background-color: $BackgroundPrimary;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  margin-top: 20px;
+}
+
+.menu {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -8rem;
+}
+
+.menu-title {
+  font-size: 14px;
+  color: white;
+  align-self: flex-start;
+  margin-bottom: 15px;
+  margin-left: 2rem;
+}
+
+.menu-item {
+  display: flex;
+  width: 12rem;
+  height: 3rem;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+  margin-top: -2.5rem;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  color: white;
+}
+
+.menu-option {
+  font-size: 14px;
+  margin-right: 3rem;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.menu-quit {
+  font-size: 16px;
+  margin-right: 3rem;
+  color: white;
+}
+
+.menu-icon-quit {
+  width: 16px;
+  height: 16px;
+  margin-right: 1rem;
+  color: white;
+}
+
+.q-drawer {
+  background-color: $BackgroundPrimary;
+  width: 300px;
+}
+</style>

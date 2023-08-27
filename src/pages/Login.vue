@@ -1,6 +1,6 @@
 <template>
   <div class="fullscreen-container">
-    <img src="icons\Logo.png" alt="Logo Convicti" />
+    <img src="icons\logo-login.png" alt="Logo Convicti" />
     <div class="login-form">
       <label for="email">E-mail</label>
       <input type="email" v-model="email" id="email" placeholder=" " />
