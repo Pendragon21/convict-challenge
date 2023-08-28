@@ -22,7 +22,7 @@
             flat
             class="company-button"
             label="Adicionar Empresa"
-            @click="addCompany"
+            @click="{{ this.$router.push('/register'); }}"
           >
             <q-icon name="add" class="add-icon" />
           </q-btn>
