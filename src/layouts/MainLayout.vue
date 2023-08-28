@@ -11,8 +11,13 @@
           </div>
         </div>
         <div class="footer">
-          <img src="icons/power-white.png" alt="sair" class="menu-icon-quit" />
-          <h1 class="menu-quit">Sair</h1>
+          <img
+            src="icons/power-white.png"
+            alt="sair"
+            class="menu-icon-quit"
+            @click="{{ this.$router.push('/'); }}"
+          />
+          <h1 class="menu-quit" @click="{{ this.$router.push('/'); }}">Sair</h1>
         </div>
       </div>
     </q-drawer>
@@ -84,8 +89,8 @@ export default {
 }
 
 .menu-icon {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin-right: 1rem;
   color: white;
 }
@@ -97,7 +102,7 @@ export default {
 
 .footer {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 8rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -109,14 +114,18 @@ export default {
 .menu-quit {
   font-size: 16px;
   margin-right: 3rem;
+  margin-bottom: -1rem;
   color: white;
+  cursor: pointer;
 }
 
 .menu-icon-quit {
   width: 16px;
   height: 16px;
+  margin-bottom: -1.5rem;
   margin-right: 1rem;
   color: white;
+  cursor: pointer;
 }
 
 .q-drawer {

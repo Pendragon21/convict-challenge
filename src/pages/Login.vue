@@ -6,7 +6,7 @@
       <input type="email" v-model="email" id="email" placeholder=" " />
       <label for="password">Senha</label>
       <input type="password" v-model="password" id="password" placeholder=" " />
-      <q-btn @click="login" label="Entrar" class="login-button" />
+      <q-btn @click="login" label="Entrar" class="login-button" :disable="!isFormValid" />
     </div>
   </div>
 </template>
@@ -20,9 +20,16 @@ export default {
       password: '',
     };
   },
+  computed: {
+    isFormValid() {
+      return this.email && this.password;
+    },
+  },
   methods: {
     login() {
-      // Add your login logic here
+      if (this.isFormValid) {
+        this.$router.push('/maps');
+      }
     },
   },
 };
