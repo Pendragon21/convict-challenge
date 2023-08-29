@@ -64,7 +64,7 @@ import CompaniesRegister from './CompaniesRegister.vue';
 export default {
   setup() {
     const companies = [
-      // Your list of companies with latitude and longitude
+      // list of companies with latitude and longitude
     ];
     const selectedCompany = ref(null);
     const searchQuery = ref('');
