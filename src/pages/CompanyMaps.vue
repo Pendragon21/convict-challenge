@@ -22,7 +22,7 @@
             flat
             class="company-button"
             label="Adicionar Empresa"
-            @click="{{ this.$router.push('/register'); }}"
+            @click="showAddCompanyModal = true"
           >
             <q-icon name="add" class="add-icon" />
           </q-btn>
@@ -36,6 +36,16 @@
         <p>{{ selectedCompany.email }}</p>
         <p>{{ selectedCompany.representative }}</p>
       </div>
+      <div v-else-if="noResultsMessage">
+        <p>{{ noResultsMessage }}</p>
+      </div>
+      <q-dialog
+        v-model="showAddCompanyModal"
+        position="right"
+        class="modal-content"
+      >
+        <CompaniesRegister v-if="showAddCompanyModal" />
+      </q-dialog>
     </q-page-container>
   </q-layout>
 </template>
@@ -48,7 +58,8 @@ import OSM from 'ol/source/OSM';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import { fromLonLat } from 'ol/proj';
-import Overlay from 'ol/Overlay';
+
+import CompaniesRegister from './CompaniesRegister.vue';
 
 export default {
   setup() {
@@ -56,7 +67,30 @@ export default {
       // Your list of companies with latitude and longitude
     ];
     const selectedCompany = ref(null);
+    const searchQuery = ref('');
+    const noResultsMessage = ref('');
+    const showAddCompanyModal = ref(false);
     let map;
+
+    const handleSearch = () => {
+      if (!searchQuery.value) {
+        noResultsMessage.value = '';
+        selectedCompany.value = null;
+        return;
+      }
+
+      const foundCompany = companies.find(company =>
+        company.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+
+      if (foundCompany) {
+        noResultsMessage.value = '';
+        selectedCompany.value = foundCompany;
+      } else {
+        selectedCompany.value = null;
+        noResultsMessage.value = `Nenhuma empresa foi encontrada com o nome: "${searchQuery.value}"`;
+      }
+    };
 
     onMounted(() => {
       map = new Map({
@@ -93,6 +127,10 @@ export default {
 
     return {
       selectedCompany,
+      searchQuery,
+      noResultsMessage,
+      showAddCompanyModal,
+      handleSearch,
     };
   },
 };
@@ -100,7 +138,6 @@ export default {
 
 
 <style scoped lang="scss">
-/* Your existing styles go here */
 
 .header {
   display: flex;
@@ -164,4 +201,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.modal-content {
+  width: 50%;
+}
 </style>

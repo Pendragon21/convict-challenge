@@ -1,5 +1,6 @@
 <template>
-  <div class="q-pa-md form-container">
+  <div class="companies-register-modal">
+    <div class="q-pa-md form-container">
     <h1 class="form-title">Cadastrar Empresas</h1>
     <q-form @submit="submitForm" class="form-grid">
       <div class="form-column">
@@ -116,7 +117,7 @@
         />
       </div>
       <div class="form-buttons">
-        <q-btn class="q-btn-cancel" label="Cancelar" @click="cancelar" />
+        <q-btn class="q-btn-cancel" label="Cancelar" @click="{{ this.$router.push('/maps'); }}" />
         <q-btn
           class="q-btn-confirm"
           label="Cadastrar Empresa"
@@ -125,6 +126,7 @@
         />
       </div>
     </q-form>
+  </div>
   </div>
 </template>
 
@@ -201,9 +203,10 @@ export default {
     },
   },
 };
+
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .form-container {
   max-height: 100vh;
   overflow: auto;
