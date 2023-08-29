@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/Pendragon21/convict-challenge/blob/main/public/template.png" alt="Template" width="200"></p>
+<p align="center"><img src="https://github.com/Pendragon21/convict-challenge/blob/main/public/template.png" alt="Template" width="800" height="400"></p>
 
 # Convicti Challenge
 
