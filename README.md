@@ -1,8 +1,11 @@
-# Quasar App (convict-challenge)
+<p align="center"><img src="https://github.com/Pendragon21/convict-challenge/blob/main/public/template.png" alt="Template" width="200"></p>
 
-A Quasar project made to resolve a technical challenge
+# Convicti Challenge
+
+> To initialize the project, first:
 
 ## Install the dependencies
+
 ```bash
 yarn
 # or
@@ -10,32 +13,27 @@ npm install
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
+
 ```bash
 quasar dev
 ```
 
-
 ### Lint the files
+
 ```bash
 yarn lint
 # or
 npm run lint
 ```
 
-
 ### Format the files
+
 ```bash
 yarn format
 # or
 npm run format
 ```
 
+## License
 
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+[MIT](/license) &copy; Rafael Mendes
